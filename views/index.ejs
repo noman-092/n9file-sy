@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <div class="container">
+    <!-- 1),2),3),4),6) -->
+    <div class="left-penal">
+    <form action="/create" method="post">
+   <input type="text" name="filename" placeholder="filename.extension">
+  </form>
+
+<!-- 7) -->
+<ul>
+ <% files.forEach((data)=>{ %> %>
+    <li>
+      <a href="/<%=data%>"><%=data%></a>
+      <a href="/file/<%=data%>">❌</a>
+    </li>
+  <%})%>
+</ul>
+</div>
+
+
+
+
+<div class="right-penal">
+<% if(filedata){ %>
+<form action="/update/<%=filename%>" method="post">
+  <button>update</button>
+  <textarea cols="100" rows="15"  name="filedata" spellcheck="true"><%=filedata%>
+  </textarea>
+</form>
+<% } else{ %>
+  <h1>No file Selected or Data Not Present.</h1>
+  <% } %>
+</div>
+</div>
+  </body>
+</html>
